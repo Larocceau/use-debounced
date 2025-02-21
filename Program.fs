@@ -5,6 +5,7 @@ open Fetch
 
 module React =
     let useDebounced (delay: int) f =
+        
         // this value is only used to affect the behavior of dispatchUpdate where it's accessed via the updater, so can be discarded here
         let _, updateCancellationSource =
             React.useStateWithUpdater (None: CancellationTokenSource option)
@@ -21,7 +22,6 @@ module React =
 
             async {
                 do! Async.Sleep delay
-
 
                 if not cts.IsCancellationRequested then
                     f args
