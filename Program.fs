@@ -46,7 +46,6 @@ let Joker () =
 
     let (joke, setJoke) = React.useState (Some "Search to find a funny joke!")
 
-
     let updateJoke = searchJokes >> Promise.iter setJoke
 
     // If you comment out this line, the app will still work, but will send a http request on every keypress in the textbox
@@ -68,10 +67,7 @@ let Joker () =
 
 let page =
     React.fragment
-        [ Html.header
-              [ Html.h1 "Jokes galore"
-
-                ]
+        [ Html.header [ Html.h1 "Jokes galore" ]
           Html.main [ Joker() ]
           Html.footer
               [ Html.p
