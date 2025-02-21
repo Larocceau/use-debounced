@@ -32,7 +32,10 @@ module React =
 
 let searchJokes searchTerm : Fable.Core.JS.Promise<string option> =
     promise {
-        let! result = tryFetch $"https://v2.jokeapi.dev/joke/Any?format=txt&contains={searchTerm}" []
+        let! result =
+            tryFetch
+                $"https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&format=txt&contains={searchTerm}"
+                []
 
         match result with
         | Ok response ->
@@ -72,7 +75,8 @@ let page =
           Html.footer
               [ Html.p
                     [ Html.text "Jokes galore is powered by "
-                      Html.a [ prop.text "JokeApi"; prop.href "https://jokeapi.dev/" ] ]
+                      Html.a [ prop.text "JokeApi"; prop.href "https://jokeapi.dev/" ]
+                      Html.text "; I am not responsible for any inappropriate jokes shown" ]
 
                 ] ]
 
