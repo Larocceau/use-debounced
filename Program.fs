@@ -5,7 +5,7 @@ open Fetch
 
 module React =
     let useDebounced (delay: int) f =
-        
+
         // this value is only used to affect the behavior of dispatchUpdate where it's accessed via the updater, so can be discarded here
         let _, updateCancellationSource =
             React.useStateWithUpdater (None: CancellationTokenSource option)
@@ -70,7 +70,7 @@ let Joker () =
 
 let page =
     React.fragment
-        [ Html.header [ Html.h1 "Jokes galore" ]
+        [ Html.header [ Html.h1 "Jokes Galore" ]
           Html.main [ Joker() ]
           Html.footer
               [ Html.p
