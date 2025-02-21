@@ -46,10 +46,11 @@ let Joker () =
 
     let (joke, setJoke) = React.useState (Some "Search to find a funny joke!")
 
-    // let updateJoke searchTerm =
-    //     searchJokes searchTerm |> Promise.iter setJoke
 
-    let updateJoke = React.useDebounced 500 (searchJokes >> Promise.iter setJoke)
+    let updateJoke = searchJokes >> Promise.iter setJoke
+
+    // If you comment out this line, the app will still work, but will send a http request on every keypress in the textbox
+    let updateJoke = React.useDebounced 500 updateJoke
 
     React.fragment
         [
